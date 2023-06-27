@@ -1,0 +1,9 @@
+.nav-brand {
+  user-select: none;
+  color: limegreen;
+}
+.nav-link {
+  text-decoration: none;
+  margin-left: 20px;
+  border: none;
+}

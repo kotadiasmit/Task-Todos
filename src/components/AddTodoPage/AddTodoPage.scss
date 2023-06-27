@@ -1,0 +1,49 @@
+.border-css {
+  border-radius: 3px;
+  background-color: #ececec;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(212, 211, 211);
+  padding: 10px;
+  font-family: serif;
+  height: 100vh;
+}
+.label {
+  font-size: 18px;
+  margin-left: 2px;
+  align-self: flex-start;
+  margin-left: 30%;
+}
+.input,
+.textarea {
+  @extend .border-css;
+  width: 40%;
+  font-size: 16px;
+  padding: 2px 3px 2px 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.textarea {
+  height: 100px;
+}
+.error-msg {
+  align-self: flex-start;
+  color: red;
+  margin-left: 30%;
+}
+.select-ele {
+  align-self: flex-start;
+  margin-left: 30%;
+  width: 150px;
+  padding: 3px;
+  overflow-y: auto;
+  outline: none;
+  @extend .border-css;
+}
