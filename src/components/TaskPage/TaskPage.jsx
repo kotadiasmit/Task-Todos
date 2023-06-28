@@ -1,11 +1,15 @@
 import "./TaskPage.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavbarComp from "../Navbar/Navbar";
-import assigneeList from "../../assigneeList";
+import assigneeList from "../../assets/assigneeList";
 import TaskList from "../TaskList/TaskList";
+import { useSelector } from "react-redux";
 
 const TaskPage = () => {
-  const [filteredAssignee, setFilteredAssignee] = useState("All");
+  const defaultAssignee = useSelector(
+    (state) => state.taskStore.byDefaultAssignee
+  );
+  const [filteredAssignee, setFilteredAssignee] = useState(defaultAssignee);
   const [filteredTask, setFilteredTask] = useState("All");
 
   const onFilteredAssigneeChange = (event) => {
@@ -46,7 +50,7 @@ const TaskPage = () => {
         <select
           value={filteredTask}
           onChange={onFilteredTaskChange}
-          className="header-select"
+          className="select"
           id="status"
         >
           <option value="All">All</option>

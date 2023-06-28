@@ -1,17 +1,17 @@
 import TaskItem from "../TaskItem/TaskItem";
 import "./TaskList.scss";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
 const TaskList = (props) => {
   const { filteredAssignee, filteredTask } = props;
-  const taskArray = useSelector((state) => state.taskStore);
+  const taskArray = useSelector((state) => state.taskStore.randomTaskList);
   let updatedTasksByAssignee = taskArray;
   if (filteredAssignee !== "All") {
     updatedTasksByAssignee = taskArray.filter(
       (task) => task.assignee === filteredAssignee
     );
   }
-  //   console.log(updatedTasksByAssignee);
 
   const todoTaskArray = updatedTasksByAssignee.filter(
     (task) => task.status === "Todo"
@@ -22,9 +22,13 @@ const TaskList = (props) => {
   const doneTaskArray = updatedTasksByAssignee.filter(
     (task) => task.status === "Done"
   );
-  //   console.log(todoTaskArray);
-  //   console.log(inProgressTaskArray);
-  //   console.log(doneTaskArray);
+
+  const onChangeAssignee = (title, value) => {
+    toast(`${title} Task's Assignee changed to ${value}`, {
+      autoClose: 2000,
+    });
+  };
+
   return (
     <>
       <div className="main-task-list-container">
@@ -34,7 +38,11 @@ const TaskList = (props) => {
           (filteredTask === "All" || filteredTask === "Todo") ? (
             <ul className="list-container scrollable-dropdown">
               {todoTaskArray.map((taskDetails) => (
-                <TaskItem key={taskDetails.id} taskDetails={taskDetails} />
+                <TaskItem
+                  key={taskDetails.id}
+                  taskDetails={taskDetails}
+                  onChangeAssignee={onChangeAssignee}
+                />
               ))}
             </ul>
           ) : null}
@@ -45,7 +53,11 @@ const TaskList = (props) => {
           (filteredTask === "All" || filteredTask === "In Progress") ? (
             <ul className="list-container scrollable-dropdown">
               {inProgressTaskArray.map((taskDetails) => (
-                <TaskItem key={taskDetails.id} taskDetails={taskDetails} />
+                <TaskItem
+                  key={taskDetails.id}
+                  taskDetails={taskDetails}
+                  onChangeAssignee={onChangeAssignee}
+                />
               ))}
             </ul>
           ) : null}
@@ -56,12 +68,17 @@ const TaskList = (props) => {
           (filteredTask === "All" || filteredTask === "Done") ? (
             <ul className="list-container scrollable-dropdown">
               {doneTaskArray.map((taskDetails) => (
-                <TaskItem key={taskDetails.id} taskDetails={taskDetails} />
+                <TaskItem
+                  key={taskDetails.id}
+                  taskDetails={taskDetails}
+                  onChangeAssignee={onChangeAssignee}
+                />
               ))}
             </ul>
           ) : null}
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

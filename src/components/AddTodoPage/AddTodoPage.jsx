@@ -3,16 +3,19 @@ import NavbarComp from "../Navbar/Navbar";
 import "./AddTodoPage.scss";
 import { useState } from "react";
 import { submitTask } from "../Store/reducer";
-import assigneeList from "../../assigneeList";
+import assigneeList from "../../assets/assigneeList";
+import { ToastContainer, toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddTodoPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedValue, setSelectedValue] = useState("Assignee");
   const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
 
-  const taskArray = useSelector((state) => state.taskStore);
-  //console.log(taskArray);
+  const taskArray = useSelector((state) => state.taskStore.randomTaskList);
   const dispatch = useDispatch();
 
   const showErrorMsg = (trimmedTitle, trimmedDescription) => {
@@ -67,11 +70,17 @@ const AddTodoPage = () => {
         assignee: selectedValue,
         status: "Todo",
       };
+      toast(`${title} Task Assigned to ${addNewTask.assignee}`, {
+        autoClose: 2000,
+      });
       dispatch(submitTask(addNewTask));
       setTitle("");
       setDescription("");
       setSelectedValue("Assignee");
       setErrorMsg("");
+      setTimeout(() => {
+        navigate("/tasks");
+      }, 2000);
     } else {
       showErrorMsg(trimmedTitle, trimmedDescription);
     }
@@ -137,6 +146,7 @@ const AddTodoPage = () => {
           Submit
         </button>
       </form>
+      <ToastContainer />
     </>
   );
 };

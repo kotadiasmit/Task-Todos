@@ -6,6 +6,7 @@ import NotFound from "./components/NotFound";
 import { Provider } from "react-redux";
 import store from "./components/Store/store";
 import TaskPage from "./components/TaskPage/TaskPage";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => (
   <BrowserRouter>

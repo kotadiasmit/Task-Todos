@@ -43,7 +43,7 @@
   width: 150px;
   padding: 3px;
   outline: none;
-  height: 50px;
+  cursor: pointer;
   @extend .border-css;
 }
 @media (max-width: 700px) {
