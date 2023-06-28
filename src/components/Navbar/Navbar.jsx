@@ -6,15 +6,15 @@ import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 
 const NavbarComp = () => (
-  <Navbar className="bg-body-tertiary" data-bs-theme="dark" sticky="top">
+  <Navbar className="bg-body-tertiary" data-bs-theme="dark">
     <Container fluid>
       <Navbar.Brand className="nav-brand">User Tasks</Navbar.Brand>
 
-      <Nav className="my-2 my-lg-0">
+      <Nav>
         <NavLink to="/" className="nav-link">
           Add Task
         </NavLink>
-        <NavLink to="/" className="nav-link">
+        <NavLink to="/tasks" className="nav-link">
           Show Tasks
         </NavLink>
       </Nav>

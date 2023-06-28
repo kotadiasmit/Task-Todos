@@ -1,0 +1,19 @@
+.card {
+  background-color: transparent;
+  list-style-type: none;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid black;
+  margin-right: 8px;
+  padding: 10px 10px 0px 10px;
+  height: 200px;
+  overflow: auto;
+}
+.item-description {
+  height: 85px;
+  overflow-y: auto;
+}
+.item-select {
+  background-color: transparent;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}

@@ -4,7 +4,6 @@
   border: 1px solid gray;
   outline: none;
 }
-
 .form-container {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,7 @@
   background-color: rgb(212, 211, 211);
   padding: 10px;
   font-family: serif;
-  height: 100vh;
+  height: calc(100vh - 56px);
 }
 .label {
   font-size: 18px;
@@ -43,7 +42,22 @@
   margin-left: 30%;
   width: 150px;
   padding: 3px;
-  overflow-y: auto;
   outline: none;
+  height: 50px;
   @extend .border-css;
+}
+@media (max-width: 700px) {
+  .label {
+    margin-left: 20%;
+  }
+  .input,
+  .textarea {
+    width: 60%;
+  }
+  .error-msg {
+    margin-left: 20%;
+  }
+  .select-ele {
+    margin-left: 20%;
+  }
 }

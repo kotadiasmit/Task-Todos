@@ -17,11 +17,29 @@ const AddTodoPage = () => {
 
   const showErrorMsg = (trimmedTitle, trimmedDescription) => {
     if (trimmedTitle === "" && trimmedDescription !== "") {
-      setErrorMsg("please enter valid Title");
+      if (selectedValue === "Assignee") {
+        setErrorMsg("please enter valid Title & Assignee ");
+      } else {
+        setErrorMsg("please enter valid Title");
+      }
     } else if (trimmedTitle !== "" && trimmedDescription === "") {
-      setErrorMsg("please enter valid Description");
-    } else if (trimmedTitle === "" && trimmedDescription === "") {
-      setErrorMsg("please enter valid Title & Description");
+      if (selectedValue === "Assignee") {
+        setErrorMsg("please enter valid Description & Assignee ");
+      } else {
+        setErrorMsg("please enter valid Description");
+      }
+    } else if (
+      trimmedTitle !== "" &&
+      trimmedDescription !== "" &&
+      selectedValue === "Assignee"
+    ) {
+      setErrorMsg("please enter valid Assignee");
+    } else if (
+      trimmedTitle === "" &&
+      trimmedDescription === "" &&
+      selectedValue === "Assignee"
+    ) {
+      setErrorMsg("please enter valid Title, Description, & Assignee");
     }
   };
 
@@ -41,16 +59,19 @@ const AddTodoPage = () => {
     event.preventDefault();
     const trimmedTitle = title.trim();
     const trimmedDescription = description.trim();
-    if (trimmedTitle && trimmedDescription) {
+    if (trimmedTitle && trimmedDescription && selectedValue !== "Assignee") {
       let addNewTask = {
         id: taskArray.length ? taskArray[taskArray.length - 1].id + 1 : 1,
         title: trimmedTitle,
         description: trimmedDescription,
+        assignee: selectedValue,
+        status: "Todo",
       };
       dispatch(submitTask(addNewTask));
       setTitle("");
       setDescription("");
       setSelectedValue("Assignee");
+      setErrorMsg("");
     } else {
       showErrorMsg(trimmedTitle, trimmedDescription);
     }
@@ -59,6 +80,7 @@ const AddTodoPage = () => {
   const onSelectionChanged = (event) => {
     const { value } = event.target;
     setSelectedValue(value);
+    setErrorMsg("");
   };
 
   return (
@@ -95,7 +117,7 @@ const AddTodoPage = () => {
           onChange={onSelectionChanged}
           className="select-ele"
         >
-          <option>Assignee</option>
+          <option value="Assignee">Assignee</option>
           {assigneeList.map((each, id) => {
             return (
               <option value={each.name} key={id} className="option">
