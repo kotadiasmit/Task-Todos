@@ -1,12 +1,11 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AddTodoPage from "./components/AddTodoPage/AddTodoPage";
-import NotFound from "./components/NotFound";
 import { Provider } from "react-redux";
 import store from "./components/Store/store";
+import AddTodoPage from "./components/AddTodoPage/AddTodoPage";
 import TaskPage from "./components/TaskPage/TaskPage";
+import NotFound from "./components/NotFound";
 import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => (
   <BrowserRouter>

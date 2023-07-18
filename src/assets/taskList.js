@@ -35,14 +35,14 @@ const randomTaskList = [
     title: "Advance JavaScript",
   },
   {
-    assignee: "Manish",
+    assignee: "Unassigned",
     description: "make greed",
     id: 6,
     status: "In Progress",
     title: "Learn ReactJs",
   },
   {
-    assignee: "Manish",
+    assignee: "Unassigned",
     description: "make ReactJs",
     id: 7,
     status: "In Progress",
@@ -56,7 +56,7 @@ const randomTaskList = [
     title: "Learn Redux",
   },
   {
-    assignee: "Manish",
+    assignee: "Unassigned",
     description: "make ReduxToolkit",
     id: 9,
     status: "In Progress",

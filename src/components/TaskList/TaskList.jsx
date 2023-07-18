@@ -1,11 +1,12 @@
-import TaskItem from "../TaskItem/TaskItem";
-import "./TaskList.scss";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import TaskItem from "../TaskItem/TaskItem";
+import "./TaskList.scss";
 
 const TaskList = (props) => {
   const { filteredAssignee, filteredTask } = props;
   const taskArray = useSelector((state) => state.taskStore.randomTaskList);
+
   let updatedTasksByAssignee = taskArray;
   if (filteredAssignee !== "All") {
     updatedTasksByAssignee = taskArray.filter(

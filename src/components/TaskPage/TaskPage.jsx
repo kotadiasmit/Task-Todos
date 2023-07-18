@@ -1,9 +1,9 @@
-import "./TaskPage.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import NavbarComp from "../Navbar/Navbar";
 import assigneeList from "../../assets/assigneeList";
 import TaskList from "../TaskList/TaskList";
-import { useSelector } from "react-redux";
+import "./TaskPage.scss";
 
 const TaskPage = () => {
   const defaultAssignee = useSelector(

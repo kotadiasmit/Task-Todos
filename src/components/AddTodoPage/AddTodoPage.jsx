@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import NavbarComp from "../Navbar/Navbar";
-import "./AddTodoPage.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import NavbarComp from "../Navbar/Navbar";
 import { submitTask } from "../Store/reducer";
 import assigneeList from "../../assets/assigneeList";
-import { ToastContainer, toast } from "react-toastify";
-import { Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import "./AddTodoPage.scss";
 
 const AddTodoPage = () => {
   const [title, setTitle] = useState("");

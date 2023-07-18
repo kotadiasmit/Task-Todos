@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import "./TaskItem.scss";
-import assigneeList from "../../assets/assigneeList";
 import { useDispatch } from "react-redux";
 import { changeAssignee, changeTaskStatus } from "../Store/reducer";
 import { ToastContainer, toast } from "react-toastify";
+import assigneeList from "../../assets/assigneeList";
+import "./TaskItem.scss";
 
 const TaskItem = (props) => {
   const { taskDetails, onChangeAssignee } = props;
